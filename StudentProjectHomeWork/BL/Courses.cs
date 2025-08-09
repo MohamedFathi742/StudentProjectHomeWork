@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace StudentProjectHomeWork.BL;
-public class Cources
+public class Courses
 {
     #region Prop
-    public int Id { get; set; }
-    public string Name { get; set; } = string.Empty;
+    public int CourseId { get; set; }
+    public string CourseName { get; set; } = string.Empty;
     int _Hours;
     public int Hours
     {
@@ -32,23 +32,23 @@ public class Cources
     }
     #endregion
 
-    public void AddCourse(string courseName)
+    public void AddCourse(string courseName , int hours)
     {
 
-        Cources.Add(new Cources(courseName, 3)
-        {
+        //Cources.Add(new Cources(courseName, 3)
+        //{
 
-            Name = courseName,
-            Hours = 3
-        });
+        //    Name = courseName,
+        //    Hours = 3
+        //});
     }
 
 
-    public Cources( string name , int hours)
+    public Courses(string name, int hours)
     {
-       
-        Name = name;
-      Hours = hours;
+
+        CourseName = name;
+        Hours = hours;
     }
 
 

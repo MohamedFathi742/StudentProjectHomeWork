@@ -14,7 +14,7 @@ public class Student
     {
         StudentId = 0;
         Age = 18;
-        Courses = new List<Cources>();
+        Courses = new List<Courses>();
     }
 
     public Student(string name, int age, string major)
@@ -23,7 +23,7 @@ public class Student
         Name = name;
         Age = age;
         Major = major;
-        Courses = new List<Cources>();
+        Courses = new List<Courses>();
     }
     public Student(Student student)
     {
@@ -31,7 +31,7 @@ public class Student
         Name = student.Name;
         Age = student.Age;
         Major = student.Major;
-        Courses = new List<Cources>(student.Courses);
+        Courses = new List<Courses>(student.Courses);
     }
     #endregion
 
@@ -71,7 +71,7 @@ public class Student
 
 
     }
-    public List<Cources> Courses { set; get; }
+    public List<Courses> Courses {  get; }
     #endregion
 
     #region Methods
@@ -87,14 +87,31 @@ public class Student
 
     }
 
+    public void AddCourse(string courseName, int hours)
+    {
 
+        Courses.Add(new Courses (courseName, hours)
+        {
+        
+        CourseName = courseName,
+        Hours = hours
+        
+        });
+    }
+    public void AddCourse(Courses myCourses)
+    {
+
+        Courses.Add(
+        myCourses
+        );
+    }
 
 
     public void PrintCourse()
     {
-        foreach (var cource in Courses)
+        foreach (var course in Courses)
         {
-            Console.WriteLine($"Courses => {cource}");
+            Console.WriteLine($"Courses => {course.CourseName}");
         }
 
 
@@ -104,8 +121,5 @@ public class Student
 
 
 
-    public void Print(string st)
-    {
-        Console.WriteLine(st);
-    }
+  
 }
