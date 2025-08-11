@@ -11,7 +11,7 @@ namespace StudentProjectHomeWork
             Console.WriteLine("please enter student name" );
             student1.Name = Console.ReadLine()!;
             Console.WriteLine("please enter student major" );
-            student1.Major = Console.ReadLine()!;
+            student1.MyMajor=new Major(Console.ReadLine()!,"");
             Console.WriteLine("please enter student age");
             bool isConverted= false;
             int sAge = 0;

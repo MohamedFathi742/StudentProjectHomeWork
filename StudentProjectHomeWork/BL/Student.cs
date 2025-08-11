@@ -15,14 +15,15 @@ public class Student
         StudentId = 0;
         Age = 18;
         Courses = new List<Courses>();
+        MyMajor =new Major("","");
     }
 
-    public Student(string name, int age, string major)
+    public Student(string name, int age, string majorName,string drName)
     {
         StudentId = 0;
         Name = name;
         Age = age;
-        Major = major;
+        MyMajor = new Major(majorName, drName);
         Courses = new List<Courses>();
     }
     public Student(Student student)
@@ -30,7 +31,7 @@ public class Student
         StudentId = student.Age;
         Name = student.Name;
         Age = student.Age;
-        Major = student.Major;
+        MyMajor =new Major(student.MyMajor.MajorName,student.MyMajor.DrName);
         Courses = new List<Courses>(student.Courses);
     }
     #endregion
@@ -54,7 +55,7 @@ public class Student
         get { return _Name; }
 
     }
-    public string Major { get; set; }
+    public Major MyMajor { get; set; } 
     int _Age;
     public int Age
 
@@ -80,7 +81,7 @@ public class Student
     {
         Console.WriteLine($@"""
                                 Student Name {Name}
-                                Student Major {Major}
+                                Student Major {MyMajor.MajorName}
                                 Student Age {Age}
                                 """
                           );
