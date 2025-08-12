@@ -8,31 +8,52 @@ namespace StudentProjectHomeWork
         {
             Console.WriteLine("welcome to Student grade project");
             Student student1 = new Student();
-            Console.WriteLine("please enter student name" );
+
+
+            Console.WriteLine("please enter student name");
             student1.Name = Console.ReadLine()!;
-            Console.WriteLine("please enter student major" );
-            student1.MyMajor=new Major(Console.ReadLine()!,"");
+
+
+            Console.WriteLine("please enter student major");
+            student1.MyMajor = new Major(Console.ReadLine()!, "");
+
+
             Console.WriteLine("please enter student age");
-            bool isConverted= false;
+            bool isConverted = false;
             int sAge = 0;
-            isConverted =int.TryParse( Console.ReadLine(), out sAge);
+            isConverted = int.TryParse(Console.ReadLine(), out sAge);
             if (!isConverted)
             {
                 Console.WriteLine("please enter valid age");
                 return;
             }
             student1.Age = sAge;
+
+
             Courses courses;
+            Enrolment enrolment;
             char sUserInput = 'x';
-            while (sUserInput!='q')
+            while (sUserInput != 'q')
             {
 
                 Console.WriteLine("please enter course name and hours");
 
-                 courses=new Courses(Console.ReadLine(),Convert.ToInt32( Console.ReadLine()));
-                student1.AddCourse(courses);
+                courses = new Courses(Console.ReadLine(), Convert.ToInt32(Console.ReadLine()));
+
+                enrolment = new Enrolment();
+                enrolment.Student = student1;
+                enrolment.Courses = courses;
+                Console.WriteLine("please enter course name and hours");
+                enrolment.EnrolmentDate = DateTime.Now;
+                Console.WriteLine("please enter course name and hours");
+                enrolment.Grade= Convert.ToDouble( Console.ReadLine());
+
+                student1.AddCourse(enrolment);
+
                 Console.WriteLine("for exist press q");
-                sUserInput=Convert.ToChar(Console.ReadLine()!);
+                sUserInput = Convert.ToChar(Console.ReadLine()!);
+
+
             }
             student1.Print();
             student1.PrintCourse();

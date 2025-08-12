@@ -32,7 +32,7 @@ public class Courses
     }
     #endregion
 
-    public void AddCourse(string courseName , int hours)
+    public void AddCourse(string courseName, int hours)
     {
 
         //Cources.Add(new Cources(courseName, 3)
@@ -50,6 +50,13 @@ public class Courses
         CourseName = name;
         Hours = hours;
     }
+    public Courses(Courses courses)
+    {
 
+        CourseId = courses.CourseId;
+        CourseName = courses.CourseName;
+        Hours = courses.Hours;
+
+    }
 
 }

@@ -14,25 +14,25 @@ public class Student
     {
         StudentId = 0;
         Age = 18;
-        Courses = new List<Courses>();
-        MyMajor =new Major("","");
+        Enrolments = new List<Enrolment>();
+        MyMajor = new Major("", "");
     }
 
-    public Student(string name, int age, string majorName,string drName)
+    public Student(string name, int age, string majorName, string drName)
     {
         StudentId = 0;
         Name = name;
         Age = age;
         MyMajor = new Major(majorName, drName);
-        Courses = new List<Courses>();
+        Enrolments = new List<Enrolment>();
     }
     public Student(Student student)
     {
         StudentId = student.Age;
         Name = student.Name;
         Age = student.Age;
-        MyMajor =new Major(student.MyMajor.MajorName,student.MyMajor.DrName);
-        Courses = new List<Courses>(student.Courses);
+        MyMajor = new Major(student.MyMajor.MajorName, student.MyMajor.DrName);
+        Enrolments = new List<Enrolment>(student.Enrolments);
     }
     #endregion
 
@@ -55,7 +55,7 @@ public class Student
         get { return _Name; }
 
     }
-    public Major MyMajor { get; set; } 
+    public Major MyMajor { get; set; }
     int _Age;
     public int Age
 
@@ -72,7 +72,7 @@ public class Student
 
 
     }
-    public List<Courses> Courses {  get; }
+    public List<Enrolment> Enrolments { get; }
     #endregion
 
     #region Methods
@@ -88,31 +88,33 @@ public class Student
 
     }
 
-    public void AddCourse(string courseName, int hours)
+    public void AddCourse(string courseName, int hours, DateTime enrolDate, double grad)
     {
 
-        Courses.Add(new Courses (courseName, hours)
-        {
-        
-        CourseName = courseName,
-        Hours = hours
-        
-        });
+        Enrolment enrolment = new Enrolment();
+        enrolment.Student = this;
+        enrolment.Courses = new Courses(courseName, hours);
+        enrolment.EnrolmentDate = enrolDate;
+        enrolment.Grade = grad;
+        Enrolments.Add(enrolment);
     }
-    public void AddCourse(Courses myCourses)
+    public void AddCourse(Enrolment enrolment)
     {
 
-        Courses.Add(
-        myCourses
-        );
+        Enrolments.Add(
+                enrolment
+                       );
     }
 
 
     public void PrintCourse()
     {
-        foreach (var course in Courses)
+        foreach (var enro in Enrolments)
         {
-            Console.WriteLine($"Courses => {course.CourseName}");
+            Console.WriteLine($"Courses Name => {enro.Courses.CourseName}");
+            Console.WriteLine($"Student Name => {enro.Student.Name}");
+            Console.WriteLine($"Grad => {enro.Grade}");
+          
         }
 
 
@@ -122,5 +124,5 @@ public class Student
 
 
 
-  
+
 }
