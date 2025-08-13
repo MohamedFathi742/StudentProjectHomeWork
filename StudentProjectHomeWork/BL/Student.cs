@@ -79,12 +79,7 @@ public class Student
 
     public void Print()
     {
-        Console.WriteLine($@"""
-                                Student Name {Name}
-                                Student Major {MyMajor.MajorName}
-                                Student Age {Age}
-                                """
-                          );
+        Console.WriteLine($"  Student Name => {Name}\n  Student Major => {MyMajor.MajorName}\nStudent Age => {Age}");
 
     }
 
@@ -114,7 +109,7 @@ public class Student
             Console.WriteLine($"Courses Name => {enro.Courses.CourseName}");
             Console.WriteLine($"Student Name => {enro.Student.Name}");
             Console.WriteLine($"Grad => {enro.Grade}");
-          
+
         }
 
 

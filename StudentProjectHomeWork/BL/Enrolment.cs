@@ -48,9 +48,9 @@ public class Enrolment
     public Enrolment()
     {
         Student = new Student();
-        Courses = new Courses("", 0);
-        EnrolmentDate = DateTime.Now;
-        Grade = 0;
+        Courses = new Courses("cs", 3);
+        EnrolmentDate = DateTime.Now.AddMinutes(3);
+        Grade = 1;
     }
 
     public Enrolment(Courses courses)
